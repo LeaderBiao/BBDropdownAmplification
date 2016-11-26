@@ -33,14 +33,14 @@
     self.tableView = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    self.tableView.contentInset = UIEdgeInsetsMake(ImageHight + 64, 0, 0, 0);
+    self.tableView.contentInset = UIEdgeInsetsMake(ImageHight, 0, 0, 0);
     [self.view addSubview:self.tableView];
     
     self.zoomImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"0"]];
     self.zoomImageView.frame  = CGRectMake(0, -ImageHight, self.view.frame.size.width, ImageHight);
     //设置不会被纵向拉伸
     self.zoomImageView.contentMode = UIViewContentModeScaleAspectFill;
-    
+    self.zoomImageView.clipsToBounds = YES;
     [self.tableView addSubview:self.zoomImageView];
     
     //设置autoresizesSubviews让子类自动布局
